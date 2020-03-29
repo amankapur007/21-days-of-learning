@@ -1,0 +1,87 @@
+package linkedlist;
+
+import common.Node;
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("------------BASIC----------");
+        SinglyLinkList linkList = new SinglyLinkList();
+        linkList.insertFirst(1);
+        linkList.insertFirst(2);
+        linkList.insertFirst(3);
+        linkList.display();
+        linkList.deleteFirst();
+        linkList.display();
+        linkList.deleteFirst();
+        linkList.display();
+        linkList.insertFirst(4);
+        linkList.display();
+        linkList.insertLast(5);
+        linkList.insertLast(6);
+        linkList.insertLast(7);
+        linkList.display();
+        linkList.deleteLast();
+        linkList.display();
+        linkList.deleteLast();
+        linkList.display();
+        System.out.println("-----------REVERSE--------------");
+        SinglyLinkList list = new ReverseLinkList();
+        list.insertFirst(1);
+        list.insertFirst(2);
+        list.insertFirst(3);
+        list.insertFirst(4);
+        list.insertFirst(5);
+        list.display();
+        ((ReverseLinkList)list).reverse();
+        list.display();
+        System.out.println("--------MIDDLE------------------");
+        list = new MiddleElement();
+        list.insertFirst(1);
+        list.insertFirst(2);
+        list.insertFirst(3);
+        list.insertFirst(4);
+        list.insertFirst(5);
+        list.display();
+        System.out.println(((MiddleElement)list).middleElement().getData());
+        System.out.println("--------Nth From Last------------------");
+        list = new NthElement();
+        list.insertFirst(1);
+        list.insertFirst(2);
+        list.insertFirst(3);
+        list.insertFirst(4);
+        list.insertFirst(5);
+        list.display();
+        System.out.println(((NthElement)list).elementFromLast(1).getData());
+        System.out.println("-----------Detect Loop--------------------");
+        list =  new LoopInList();
+        Node loop = new Node(1);
+        ((LoopInList)list).insertNodeToLast(new Node(2));
+        ((LoopInList)list).insertNodeToLast(new Node(3));
+        ((LoopInList)list).insertNodeToLast(new Node(4));
+        ((LoopInList)list).insertNodeToLast(new Node(5));
+        ((LoopInList)list).insertNodeToLast(loop);
+        ((LoopInList)list).insertNodeToLast(new Node(6));
+        list.display();
+        boolean loopFlag = ((LoopInList)list).detectTheLoop();
+        System.out.println(loopFlag);
+        ((LoopInList)list).insertNodeToLast(loop);
+        loopFlag = ((LoopInList)list).detectTheLoop();
+        System.out.println(loopFlag);
+        ((LoopInList)list).startNodeOfTheLoop();
+        System.out.println("----------------Intersecting node------------------");
+        SinglyLinkList list1 = new IntersectionBetweenList();
+        Node head1=new Node(5);
+        list1.insertNodeToLast(head1);
+        list1.insertNodeToLast(new Node(6));
+        Node node = new Node(7);
+        list1.insertNodeToLast(node);
+        list1.insertNodeToLast(new Node(1));
+        list1.insertNodeToLast(new Node(2));
+
+        SinglyLinkList list2 = new IntersectionBetweenList();
+        Node head2=new Node(4);
+        list2.insertNodeToLast(head2);
+        list2.insertNodeToLast(node);
+        ((IntersectionBetweenList)list1).intersectingNode(head1, head2);
+    }
+}
